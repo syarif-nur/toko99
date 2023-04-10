@@ -12,7 +12,7 @@ class BarangController extends Controller
 {
     public function get_barang()
     {
-        $data = Barang::paginate(10);
+        $data = Barang::with('satuan')->paginate(10);
         return response($data, Response::HTTP_ACCEPTED);
     }
 
