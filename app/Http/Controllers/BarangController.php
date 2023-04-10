@@ -13,7 +13,7 @@ class BarangController extends Controller
     public function get_barang()
     {
         $data = Barang::paginate(10);
-        return response($data,Response::HTTP_ACCEPTED);
+        return response($data, Response::HTTP_ACCEPTED);
     }
 
     public function store_barang(BarangFormRequest $request)
@@ -21,7 +21,7 @@ class BarangController extends Controller
         $field = $request->validate();
         $field['img_url'] = $request->file('image')->store('image');
         $data = Barang::create($field);
-        return response($data,Response::HTTP_ACCEPTED);
+        return response($data, Response::HTTP_ACCEPTED);
     }
 
     public function edit_barang(BarangFormRequest $request)
