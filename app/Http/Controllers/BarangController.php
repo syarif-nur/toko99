@@ -18,8 +18,8 @@ class BarangController extends Controller
 
     public function store_barang(BarangFormRequest $request)
     {
-        $field = $request->validate();
-        $field['img_url'] = $request->file('image')->store('image');
+        $field = $request->validated();
+        $field['img_url'] = asset($request->file('image')->store('image'));
         $data = Barang::create($field);
         return response($data, Response::HTTP_ACCEPTED);
     }
