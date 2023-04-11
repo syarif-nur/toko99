@@ -7,6 +7,7 @@ use App\Models\Barang;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
 {
@@ -21,11 +22,25 @@ class BarangController extends Controller
         $field = $request->validated();
         $field['img_url'] = asset($request->file('image')->store('image'));
         $data = Barang::create($field);
-        return response($data, Response::HTTP_ACCEPTED);
+        $result = [
+            'message' => 'Success',
+            'error' => 'False'
+        ];
+        return response($result, Response::HTTP_ACCEPTED);
     }
 
-    public function edit_barang(BarangFormRequest $request)
+    public function update_barang(BarangFormRequest $request,$id)
     {
-        return 'test';
+        $field = $request->validated();
+        $findImage = Barang::where('id',$id)->first()->img_url;
+        $findImage = substr($findImage,19);
+        Storage::delete($findImage);
+        $field['img_url'] = asset($request->file('image')->store('image'));
+        Barang::find($id)->update($field);
+        $result = [
+            'message' => 'Success',
+            'error' => 'False'
+        ];
+        return response($result, Response::HTTP_ACCEPTED);
     }
 }
