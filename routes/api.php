@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\SatuanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,13 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     })->name('user');
 
+    //barang
     Route::get('list-barang', [BarangController::class, 'get_barang'])->name('barang.get');
     Route::post('store-barang', [BarangController::class, 'store_barang'])->name('barang.store');
     Route::put('update-barang/{id}', [BarangController::class, 'update_barang'])->name('barang.update');
+
+    //satuan
+    Route::post('store-satuan/{idBarang}',[SatuanController::class,'store_satuan'])->name('satuan.store');
+    Route::put('update-satuan/update/{id}',[SatuanController::class,'update_satuan'])->name('satuan.update');
+
 });
