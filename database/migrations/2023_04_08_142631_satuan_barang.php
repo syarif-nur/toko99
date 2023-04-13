@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('id_barang');
             $table->string('satuan');
             $table->double('harga');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
