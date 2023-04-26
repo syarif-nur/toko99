@@ -14,7 +14,7 @@ class BarangController extends Controller
     public function get_barang()
     {
         $data = Barang::with('satuan')->paginate(10);
-        return response($data, Response::HTTP_ACCEPTED);
+        return response($data, Response::HTTP_OK);
     }
 
     public function store_barang(BarangFormRequest $request)
