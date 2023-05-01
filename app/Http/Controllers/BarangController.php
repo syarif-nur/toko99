@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
 {
-    public function get_barang()
+    public function get_barang($search)
     {
-        $data = Barang::with('satuan')->paginate(10);
+        $data = Barang::where('nama_barang','LIKE','%'.$search.'%')->with('satuan')->paginate(10);
         return response($data, Response::HTTP_OK);
     }
 
