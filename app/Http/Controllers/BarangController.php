@@ -26,7 +26,7 @@ class BarangController extends Controller
             'message' => 'Success',
             'error' => 'False'
         ];
-        return response($result, Response::HTTP_ACCEPTED);
+        return response($result, Response::HTTP_CREATED);
     }
 
     public function update_barang(BarangFormRequest $request,$id)
@@ -41,6 +41,6 @@ class BarangController extends Controller
             'message' => 'Success',
             'error' => 'False'
         ];
-        return response($result, Response::HTTP_ACCEPTED);
+        return response($result, Response::HTTP_OK);
     }
 }

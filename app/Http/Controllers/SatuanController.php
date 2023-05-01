@@ -18,7 +18,7 @@ class SatuanController extends Controller
             'message'=> 'Success',
             'error'=> 'false',
         ];
-        return response($result,Response::HTTP_ACCEPTED);
+        return response($result,Response::HTTP_CREATED);
     }
 
     public function update_satuan($id,SatuanFormRequest $request)
@@ -29,6 +29,6 @@ class SatuanController extends Controller
             'message'=> 'Success',
             'error'=> 'false',
         ];
-        return response($result,Response::HTTP_ACCEPTED);
+        return response($result,Response::HTTP_OK);
     }
 }
