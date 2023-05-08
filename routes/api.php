@@ -35,4 +35,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('store-satuan/{idBarang}',[SatuanController::class,'store_satuan'])->name('satuan.store');
     Route::put('update-satuan/update/{id}',[SatuanController::class,'update_satuan'])->name('satuan.update');
 
+    //master
+    Route::get('master-barang/', [BarangController::class, 'master_barang'])->name('barang.master');
+
+
 });
