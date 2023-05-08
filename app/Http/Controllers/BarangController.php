@@ -13,7 +13,7 @@ class BarangController extends Controller
 {
     public function get_barang($search)
     {
-        if ($search == "") {
+        if ($search == "all") {
             $data = Barang::with('satuan')->paginate(10);
         }else{
             $data = Barang::where('nama_barang','LIKE','%'.$search.'%')->with('satuan')->paginate(10);
