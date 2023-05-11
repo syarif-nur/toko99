@@ -22,6 +22,17 @@ class BarangController extends Controller
         return response($data, Response::HTTP_OK);
     }
 
+    public function detail_barang($id)
+    {
+        $data = Barang::where('id',$id)->with('satuan')->first();
+        $result = [
+            'message' => 'Success',
+            'error' => 'False',
+            'data' => $data
+        ];
+        return response($result, Response::HTTP_OK);
+    }
+
     public function store_barang(BarangFormRequest $request)
     {
         $field = $request->validated();
