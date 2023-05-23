@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
 {
-    public function get_barang($search)
+    public function get_barang()
     {
-        if ($search == "all") {
+        $search = request("s");
+        if ($search == "") {
             $data = Barang::with('satuan')->paginate(10);
         }else{
             $data = Barang::where('nama_barang','LIKE','%'.$search.'%')->with('satuan')->paginate(10);
         }
-
         return response($data, Response::HTTP_OK);
     }
 

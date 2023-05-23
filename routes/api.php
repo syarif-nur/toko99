@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     })->name('user');
 
     //barang
-    Route::get('list-barang/{search}', [BarangController::class, 'get_barang'])->name('barang.get');
+    Route::get('list-barang/', [BarangController::class, 'get_barang'])->name('barang.get');
     Route::get('detail-barang/{id}', [BarangController::class, 'detail_barang'])->name('detail.get');
 
     Route::post('store-barang', [BarangController::class, 'store_barang'])->name('barang.store');
