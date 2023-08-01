@@ -40,5 +40,11 @@ Route::middleware('auth:sanctum')->group(function () {
     //master
     Route::get('master-barang/', [BarangController::class, 'master_barang'])->name('barang.master');
 
+    Route::fallback(function(){
+        return response()->json([
+            'message' => 'Page Not Found'
+        ],404);
+    });
+
 
 });
