@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BarangFormRequest;
 use App\Models\Barang;
 
+use App\Models\Satuan;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -36,8 +37,17 @@ class BarangController extends Controller
     public function store_barang(BarangFormRequest $request)
     {
         $field = $request->validated();
-        $field['img_url'] = asset($request->file('image')->store('image'));
+        // $field['img_url'] = asset('storage/' .$request->file('image')->store('images', 'public'));
+        $field['img_url'] = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg";
         $data = Barang::create($field);
+
+        foreach($request->satuan as $single){
+            Satuan::create([
+                'id_barang' => $data['id'],
+                'nama_satuan' => $single['nama_satuan'],
+                'harga' => $single['harga'],
+            ]);
+        }
         $result = [
             'message' => 'Success',
             'error' => 'False'
@@ -48,10 +58,7 @@ class BarangController extends Controller
     public function update_barang(BarangFormRequest $request,$id)
     {
         $field = $request->validated();
-        $findImage = Barang::where('id',$id)->first()->img_url;
-        $findImage = substr($findImage,19);
-        Storage::delete($findImage);
-        $field['img_url'] = asset($request->file('image')->store('image'));
+        // $field['img_url'] = asset($request->file('image')->store('image'));
         Barang::find($id)->update($field);
         $result = [
             'message' => 'Success',

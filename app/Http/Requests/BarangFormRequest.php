@@ -23,7 +23,7 @@ class BarangFormRequest extends FormRequest
     {
         return [
             'nama_barang' => 'required',
-            'img_url' => 'required!image!mimes:jpg,png,jpeg,gif,svg|max:2048',
+            // 'image' => 'required',
         ];
     }
 }

@@ -22,7 +22,7 @@ class SatuanFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'satuan' => 'required',
+            'nama_satuan' => 'required',
             'harga' => 'required',
         ];
     }

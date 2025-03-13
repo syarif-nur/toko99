@@ -9,9 +9,9 @@ class Satuan extends Model
 {
     use HasFactory;
     protected $table = 'satuan_barang';
-    protected $fillable = ['id_barang','satuan','harga','status'];
+    protected $fillable = ['id_barang','nama_satuan','harga','status'];
 
-    
+
 
     public static function status($i)
     {
