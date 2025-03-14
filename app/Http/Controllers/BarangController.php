@@ -39,15 +39,15 @@ class BarangController extends Controller
         $field = $request->validated();
         $field['img_url'] = asset('storage/' .$request->file('image')->store('images', 'public'));
         // $field['img_url'] = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg";
-        $data = Barang::create($field);
+        $result = Barang::create($field);
 
-        foreach($request->satuan as $single){
-            Satuan::create([
-                'id_barang' => $data['id'],
-                'nama_satuan' => $single['nama_satuan'],
-                'harga' => $single['harga'],
-            ]);
-        }
+        // foreach($request->satuan as $single){
+        //     Satuan::create([
+        //         'id_barang' => $data['id'],
+        //         'nama_satuan' => $single['nama_satuan'],
+        //         'harga' => $single['harga'],
+        //     ]);
+        // }
         $result = [
             'message' => 'Success',
             'error' => 'False'
